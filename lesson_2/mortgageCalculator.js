@@ -30,33 +30,39 @@ let monthlyMortgageCalc = (loanAmt, annualInterest, loanDur) => {
 
   return monthlyMortgagePayment.toFixed(2);
 };
+while (true) {
+  let monthlyMortgageResult = "";
 
-let monthlyMortgageResult = "";
+  console.log("==================================================");
+  console.log("Hello and welcome to the mortgage calculator app!");
+  console.log("This app will require some information from you");
+  console.log("and then tell you what your monthly mortgage payment is.");
+  console.log("Let's get started!");
+  console.log("==================================================");
 
-console.log("==================================================");
-console.log("Hello and welcome to the mortgage calculator app!");
-console.log("This app will require some information from you");
-console.log("and then tell you what your monthly mortgage payment is.");
-console.log("Let's get started!");
-console.log("==================================================");
+  prompt("First, what is your total loan amount in US dollars?");
+  let totalLoanAmount = readline.question();
 
-prompt("First, what is your total loan amount in US dollars?");
-let totalLoanAmount = readline.question();
+  prompt("Thank you! Next, what is your Annual Interest Rate?");
+  prompt("For example: 25%");
+  let annualInterest = readline.question();
 
-prompt("Thank you! Next, what is your Annual Interest Rate?");
-prompt("For example: 25%");
-let annualInterest = readline.question();
+  prompt("Finally, what is the duration of your loan in MONTHS?");
+  prompt("For example: 24");
+  let loanDurationMonths = readline.question();
 
-prompt("Finally, what is the duration of your loan in MONTHS?");
-prompt("For example: 24");
-let loanDurationMonths = readline.question();
+  monthlyMortgageResult = monthlyMortgageCalc(
+    totalLoanAmount,
+    annualInterest,
+    loanDurationMonths
+  );
 
-monthlyMortgageResult = monthlyMortgageCalc(
-  totalLoanAmount,
-  annualInterest,
-  loanDurationMonths
-);
+  console.log("==================================================");
+  console.log(`Your Monthly Mortgage Payment is: $${monthlyMortgageResult}`);
+  console.log("==================================================");
+  console.log("Thank you so much for using the Mortgage Calculator!");
+  prompt("Would you like to perform another operation? (y/n)");
+  let appContinue = readline.question();
 
-console.log("==================================================");
-console.log("Thank you so much for using the Mortgage Calculator!");
-console.log(`Your Monthly Mortgage Payment is: $${monthlyMortgageResult}`);
+  if (appContinue !== "y") break;
+}
